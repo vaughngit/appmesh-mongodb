@@ -57,10 +57,10 @@ Resources:
         MaximumPercent: 200
         MinimumHealthyPercent: 100
       DesiredCount: 1
-      LaunchType: 'FARGATE'
+      LaunchType: 'EC2'
       ServiceRegistries:
         - RegistryArn:
-            'Fn::GetAtt': ServiceDiscoveryRecord.Arn
+            'Fn::ImportValue': !Sub "${MicroserviceName}:serviceArn"
       PropagateTags: TASK_DEFINITION
       NetworkConfiguration:
         AwsvpcConfiguration:
@@ -83,7 +83,8 @@ Resources:
     Type: AWS::ECS::TaskDefinition
     Properties:
       RequiresCompatibilities:
-        - 'FARGATE'
+        #- 'FARGATE'
+        - 'EC2'
       Family: !Ref MicroserviceName
       NetworkMode: 'awsvpc'
       Cpu: 256
