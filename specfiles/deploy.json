@@ -1,0 +1,11 @@
+{ 
+  "EnvironmentName": "pipeline-demo",
+  "MicroserviceName": "yelb-mongodb",
+  "Protocol": "tcp",
+  "Port": 27017,
+  "Namespace": "demo.local",
+  "PercentageStep": 25,
+  "WaitTime": 60,
+  "FailureThresholdValue": 5,
+  "FailureThresholdTime": 300
+}
