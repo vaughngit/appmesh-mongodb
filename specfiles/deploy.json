@@ -1,9 +1,9 @@
 { 
-  "EnvironmentName": "pipeline-demo",
-  "MicroserviceName": "yelb-mongodb",
+  "EnvironmentName": "tnc",
+  "MicroserviceName": "mongodb",
   "Protocol": "tcp",
   "Port": 27017,
-  "Namespace": "demo.local",
+  "Namespace": "dev.local",
   "PercentageStep": 25,
   "WaitTime": 60,
   "FailureThresholdValue": 5,
