@@ -1,25 +1,15 @@
-FROM mongo
-
-# Define mountable directories.
+#FROM fedora:20
+FROM fedora
+#COMMENT { "description": "mongodb service container",
+# "usage": "docker run -d -p 27017:27017 --name mongodb mlamouri/mongodb --volume=/mydbdatadir:/var/lib/mongodb" }
+RUN  yum install -y mongodb-server && yum clean all
+RUN  mkdir -p /var/lib/mongodb && touch /var/lib/mongodb/.keep && chown -R mongodb:mongodb /var/lib/mongodb
+ADD mongodb.conf /etc/mongodb.conf
+#VOLUME [ "/var/lib/mongodb" ]
 VOLUME ["/data/db"]
-
-# Expose ports.
-#   - 27017: process
-#EXPOSE 27017
-
-
-#FROM public.ecr.aws/bitnami/postgresql:10
-#MAINTAINER massimo@it20.info
-#WORKDIR /
-#COPY init-yelb-db.sh /docker-entrypoint-initdb.d/init-yelb-db.sh
-
-#
-# MongoDB Dockerfile
-#
-# https://github.com/dockerfile/mongodb
-#
-
-# Pull base image.
-#ENV POSTGRES_USER=postgres
-#ENV POSTGRES_PASSWORD=postgres_password
-
+EXPOSE 27017
+USER mongodb
+#WORKDIR /var/lib/mongodb
+WORKDIR /data/db
+ENTRYPOINT ["/usr/bin/mongod", "--config", "/etc/mongodb.conf"]
+CMD ["--quiet"]
