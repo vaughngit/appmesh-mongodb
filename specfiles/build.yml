@@ -4,7 +4,7 @@ phases:
   pre_build:
     commands:
       - SHA=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)
-      # - REPOSITORY="$DOCKER_REGISTRY_URI:$(date +%Y-%m-%d_%H.%M.%S).$SHA"
+      - REPOSITORY="$DOCKER_REGISTRY_URI:$(date +%Y-%m-%d_%H.%M.%S).$SHA"
       # - $(aws ecr get-login --no-include-email)
   # build:
   #   commands:
