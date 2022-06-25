@@ -146,10 +146,10 @@ Resources:
           PortMappings:
             - ContainerPort: !Ref Port
               Protocol: 'tcp'
-          MountPoints:
-            - ContainerPath: /data/db
-              ReadOnly: false
-              SourceVolume: monogodb-volume
+          # MountPoints:
+          #   - ContainerPath: /data/db
+          #     ReadOnly: false
+          #     SourceVolume: monogodb-volume
         - Name: xray
           Image: amazon/aws-xray-daemon
           Essential: true
