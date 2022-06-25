@@ -126,7 +126,8 @@ Resources:
             TransitEncryption: ENABLED
       ContainerDefinitions:
         - Name: 'app'
-          Image: !Ref ContainerImage
+          #Image: !Ref ContainerImage
+          Image: mongo
           Essential: true
           DependsOn:
             - ContainerName: 'envoy'
