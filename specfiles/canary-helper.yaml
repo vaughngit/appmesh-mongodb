@@ -147,8 +147,8 @@ Resources:
             - ContainerPort: !Ref Port
               Protocol: 'tcp'
           MountPoints:
-            #- ContainerPath: /data/db
-            - ContainerPath: /data
+            - ContainerPath: /data/db
+            #- ContainerPath: /data
               ReadOnly: false
               SourceVolume: monogodb-volume
         - Name: xray
