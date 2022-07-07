@@ -118,10 +118,10 @@ Resources:
           EFSVolumeConfiguration:
             AuthorizationConfig: 
                 AccessPointId: 
-                  'Fn::ImportValue': !Sub "${EnvironmentName}:accessPointId"
+                  'Fn::ImportValue': !Sub "${MicroserviceName}:accessPointId"
                 #IAM: String
             FilesystemId:
-              'Fn::ImportValue': !Sub "${EnvironmentName}:efsFileSystemId"
+              'Fn::ImportValue': !Sub "${MicroserviceName}:efsFileSystemId"
             #RootDirectory: String
             TransitEncryption: ENABLED
       ContainerDefinitions:
