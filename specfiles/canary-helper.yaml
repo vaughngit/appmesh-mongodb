@@ -132,8 +132,8 @@ Resources:
           DependsOn:
             - ContainerName: 'envoy'
               Condition: 'HEALTHY'
-            - ContainerName: 'xray'
-              Condition: 'START'
+            # - ContainerName: 'xray'
+            #   Condition: 'START'
           Environment:
             - Name: SEARCH_DOMAIN
               Value: !Ref Namespace
@@ -153,7 +153,7 @@ Resources:
               SourceVolume: monogodb-volume
         - Name: xray
           Image: amazon/aws-xray-daemon
-          Essential: true
+          Essential: false
           User: '1337'
           LogConfiguration:
               LogDriver: awslogs
