@@ -6,6 +6,6 @@ VOLUME ["/data/db", "/data/configdb"]
 
 #ADD mongodb.conf /etc/mongodb.conf
 
-EXPOSE 27017
+#EXPOSE 27017
 
 
