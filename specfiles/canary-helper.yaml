@@ -162,7 +162,8 @@ Resources:
                   awslogs-region: !Ref AWS::Region
                   awslogs-stream-prefix: !Sub '${MicroserviceName}-xray'
         - Name: envoy
-          Image: !Sub '840364872350.dkr.ecr.${AWS::Region}.amazonaws.com/aws-appmesh-envoy:v1.15.1.0-prod'
+          #Image: !Sub '840364872350.dkr.ecr.${AWS::Region}.amazonaws.com/aws-appmesh-envoy:v1.15.1.0-prod'
+          Image: 'public.ecr.aws/appmesh/aws-appmesh-envoy:v1.22.0.0-prod'
           Essential: true
           User: '1337'
           Ulimits:
@@ -190,10 +191,14 @@ Resources:
               awslogs-region: !Ref AWS::Region
               awslogs-stream-prefix: !Sub '${MicroserviceName}-envoy'
           Environment:
-            - Name: 'APPMESH_VIRTUAL_NODE_NAME'
+            # - Name: 'APPMESH_VIRTUAL_NODE_NAME'
+            #   Value: !Sub 'mesh/${EnvironmentName}/virtualNode/${MicroserviceName}-${Sha}'
+            - Name: 'APPMESH_RESOURCE_ARN'
               Value: !Sub 'mesh/${EnvironmentName}/virtualNode/${MicroserviceName}-${Sha}'
+            - Name: 'AWS_REGION'
+              Value: !Ref AWS::Region
             - Name: ENVOY_LOG_LEVEL
-              Value: debug
+              Value: warning
             - Name: ENABLE_ENVOY_XRAY_TRACING
               Value: '1'
             - Name: ENABLE_ENVOY_STATS_TAGS
