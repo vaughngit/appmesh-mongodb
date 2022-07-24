@@ -1,4 +1,5 @@
-FROM mongo
+#FROM mongo
+FROM  excellalabs/mongo
 
 # Define mountable directories.
 VOLUME ["/data/db"]
