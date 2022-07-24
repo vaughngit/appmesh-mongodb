@@ -1,4 +1,4 @@
-FROM amd64/mongo
+FROM mongo
 
 # Define mountable directories.
 VOLUME ["/data/db"]
