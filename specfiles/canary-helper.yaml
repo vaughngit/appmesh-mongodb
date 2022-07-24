@@ -139,12 +139,14 @@ Resources:
               Value: !Sub '{{resolve:ssm:/${EnvironmentName}/dev/${MicroserviceName}/MONGO_ROOT_USERNAME}}'
             - Name: MONGO_INITDB_ROOT_PASSWORD
               Value: !Sub '{{resolve:ssm:/${EnvironmentName}/dev/${MicroserviceName}/MONGO_ROOT_PASSWORD}}'
-            - Name: MONGODB_APPLICATION_DATABASE
-              Value: !Sub '{{resolve:ssm:/${EnvironmentName}/dev/${MicroserviceName}/MONGODB_APPLICATION_DATABASE}}'
-            - Name: MONGODB_APPLICATION_USER
-              Value: !Sub '{{resolve:ssm:/${EnvironmentName}/dev/${MicroserviceName}/MONGODB_APPLICATION_USER}}'
-            - Name: MONGODB_APPLICATION_PASS
-              Value: !Sub '{{resolve:ssm:/${EnvironmentName}/dev/${MicroserviceName}/MONGODB_APPLICATION_PASS}}'
+            # - Name: MONGODB_APPLICATION_DATABASE
+            #   Value: !Sub '{{resolve:ssm:/${EnvironmentName}/dev/${MicroserviceName}/MONGODB_APPLICATION_DATABASE}}'
+            # - Name: MONGODB_APPLICATION_USER
+            #   Value: !Sub '{{resolve:ssm:/${EnvironmentName}/dev/${MicroserviceName}/MONGODB_APPLICATION_USER}}'
+            # - Name: MONGODB_APPLICATION_PASS
+            #   Value: !Sub '{{resolve:ssm:/${EnvironmentName}/dev/${MicroserviceName}/MONGODB_APPLICATION_PASS}}'
+            - Name: MONGO_INITDB_DATABASE
+              Value: !Sub '{{resolve:ssm:/${EnvironmentName}/dev/${MicroserviceName}/MONGO_INITDB_DATABASE}}'
           LogConfiguration:
             LogDriver: 'awslogs'
             Options:
